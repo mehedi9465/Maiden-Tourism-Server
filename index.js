@@ -10,8 +10,7 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.u8ama.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-const uri = "mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.u8ama.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.u8ama.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -21,7 +20,6 @@ async function run() {
       const database = client.db("Maiden_Tour");
       const packages = database.collection("Packages");
       const bookings = database.collection("Bookings");
-
       // Get All Packages
       app.get('/packages', async (req, res) => {
           const result = await packages.find({}).toArray();
