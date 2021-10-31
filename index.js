@@ -20,7 +20,6 @@ async function run() {
       const packages = database.collection("Packages");
       const bookings = database.collection("Bookings");
 
-
       // Get All Packages
       app.get('/packages', async (req, res) => {
           const result = await packages.find({}).toArray();
